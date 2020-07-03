@@ -1,0 +1,7 @@
+{
+  "*.css": "prettier --write",
+  "*.scss": "prettier --write",
+  "*.js": "prettier --write",
+  "*.tsx?": "prettier --parser=typescript --write",
+  "*.vue": "prettier --write"
+}
