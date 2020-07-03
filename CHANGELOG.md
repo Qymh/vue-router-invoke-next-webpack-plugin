@@ -1,3 +1,7 @@
+# [0.1.0-alpha.2](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/compare/v0.1.0-alpha.1...v0.1.0-alpha.2) (2020-07-03)
+
+
+
 # 0.1.0-alpha.1 (2020-07-03)
 
 
