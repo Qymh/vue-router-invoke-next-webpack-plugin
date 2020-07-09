@@ -6,6 +6,8 @@ import { ErrorCodes, error } from './error';
 import { replacePostfix, camelize, isDir } from './utils';
 import chalk from 'chalk';
 
+declare var __TEST__: boolean;
+
 export type WeakOptions = {
   // watch directory
   root: string;
@@ -35,15 +37,11 @@ export const defaultOptions: WeakOptions = {
 
 function validateOptions(options: WeakOptions) {
   const { root, language, version, mode } = options;
-  if (!root) {
-    error(ErrorCodes.WRONG_OPTIONS, 'root option is needed');
-    try {
-      isDir(root);
-    } catch (e) {
-      error(ErrorCodes.WRONG_OPTIONS, 'root option must be a directory');
-      process.exit(1);
-    }
-    process.exit(1);
+  try {
+    isDir(root);
+  } catch (e) {
+    error(ErrorCodes.WRONG_OPTIONS, 'root option must be a directory');
+    return false;
   }
   if (+version! !== 2 && +version! !== 3) {
     error(
@@ -52,25 +50,30 @@ function validateOptions(options: WeakOptions) {
         3
       )} for vue3`
     );
-    process.exit(1);
+    return false;
   }
   if (language !== 'javascript' && language !== 'typescript') {
     error(
       ErrorCodes.WRONG_OPTIONS,
       'language option can only be javascript or typescript'
     );
-    process.exit(1);
+    return false;
   }
   if (mode !== 'history' && mode !== 'hash') {
     error(ErrorCodes.WRONG_OPTIONS, 'mode option can only be history or hash');
-    process.exit(1);
+    return false;
   }
+  return true;
 }
 
-function normalizeOptions(options: WeakOptions): Options | never {
+function normalizeOptions(options: WeakOptions) {
   options = { ...defaultOptions, ...options };
 
-  validateOptions(options);
+  if (!validateOptions(options)) {
+    if (!__TEST__) {
+      process.exit(0);
+    }
+  }
 
   const { root } = options;
   options.getRelativePath = generateGetRelativePathFn(root);

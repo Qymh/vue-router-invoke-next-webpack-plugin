@@ -12,17 +12,19 @@ export function success(path?: string) {
   }
   console.log(
     chalk.green(
-      `[vue-router-invoke-next-webpack-plugin] ${`successed build ${path} at ${new Date().toLocaleTimeString()}`}`
+      `
+[vue-router-invoke-next-webpack-plugin] ${`successed build ${path} at ${new Date().toLocaleTimeString()}`}
+      `
     )
   );
 }
 
 export function error(code: ErrorCodes, details?: string) {
   hasError = true;
-  console.log(
+  console.error(
     chalk.red(
       `
-      [vue-router-invoke-next-webpack-plugin] [${code}] ${details}
+[vue-router-invoke-next-webpack-plugin] [${errorMessages[code]}] ${details}
       `
     )
   );
@@ -34,10 +36,10 @@ export function warn(
   raw?: any,
   details?: string
 ) {
-  console.log(
+  console.warn(
     chalk.yellow(
       `
-      [vue-router-invoke-next-webpack-plugin] [${code}] ${details}
+[vue-router-invoke-next-webpack-plugin] [${errorMessages[code]}] ${details}
       `
     )
   );
@@ -52,7 +54,7 @@ export const enum ErrorCodes {
 /* eslint-enable no-unused-vars */
 
 export const errorMessages = {
-  [ErrorCodes.WRONG_OPTIONS]: 'Wrong Options',
-  [ErrorCodes.INVALID_ROUTE_RULE]: 'Invalid Route Rule',
-  [ErrorCodes.YAML_PARSE_ERROR]: 'Yaml Parse Error'
+  [ErrorCodes.WRONG_OPTIONS]: 'wrong options',
+  [ErrorCodes.INVALID_ROUTE_RULE]: 'invalid route rule',
+  [ErrorCodes.YAML_PARSE_ERROR]: 'yaml parse error'
 };
