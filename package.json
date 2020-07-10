@@ -10,7 +10,7 @@
     "dev:demo": "cross-env NODE_ENV=development webpack-dev-server --config demo/webpack.config.js",
     "build": "rimraf dist && rollup -c",
     "build:demo": "cross-env NODE_ENV=production webpack --config demo/webpack.config.js",
-    "test": "jest",
+    "test": "jest --watchAll",
     "pub": "node scripts/publish",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1"
   },
@@ -22,6 +22,7 @@
     "@rollup/plugin-node-resolve": "^8.1.0",
     "@rollup/plugin-replace": "^2.3.3",
     "@types/jest": "^26.0.3",
+    "@types/rimraf": "^3.0.0",
     "@vue/compiler-sfc": "^3.0.0-beta.15",
     "babel-jest": "^26.1.0",
     "builtin-modules": "^3.1.0",

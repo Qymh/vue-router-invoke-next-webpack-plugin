@@ -4,7 +4,7 @@ module.exports = {
   testMatch: ['**/tests/**/*.spec.ts'],
   collectCoverageFrom: ['src/**/*.ts'],
   coverageDirectory: 'coverage',
-  // collectCoverage: true,
+  collectCoverage: true,
   testEnvironment: 'node',
   globals: {
     __TEST__: true

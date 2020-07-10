@@ -2,10 +2,6 @@
 
 Automatic generate routes of `vue-router` based on the directory, both supported vue2.x or vue3.x
 
-## ToDoList
-
-- [] Unit Test
-
 ## Usage
 
 ### Download

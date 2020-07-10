@@ -121,7 +121,6 @@ export function generate(options: Options) {
       success(output);
     }
   };
-  console.log(process.env.NODE_ENV);
   if (process.env.NODE_ENV === 'development') {
     watchFiles(options, generatedFn);
   } else {

@@ -119,4 +119,8 @@ export class Invoke {
       });
     }
   }
+
+  test() {
+    generate(this.$options);
+  }
 }
