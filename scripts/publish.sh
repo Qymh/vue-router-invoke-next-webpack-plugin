@@ -11,6 +11,9 @@ tag=$2
 
 log "cur version: $version, cur tag: $tag"
 
+log "test"
+yarn test:single
+
 log "build code"
 yarn build
 

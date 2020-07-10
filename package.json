@@ -11,6 +11,7 @@
     "build": "rimraf dist && rollup -c",
     "build:demo": "cross-env NODE_ENV=production webpack --config demo/webpack.config.js",
     "test": "jest --watchAll",
+    "test:single": "jest",
     "pub": "node scripts/publish",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1"
   },
