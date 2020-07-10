@@ -1,3 +1,13 @@
+# [0.1.0-alpha.3](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/compare/v0.1.0-alpha.2...v0.1.0-alpha.3) (2020-07-10)
+
+
+### Features
+
+* unit test ([46fe2a5](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/commit/46fe2a545bc3994a1ecbd5335db556816c831880))
+* unit test ([a3027c5](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/commit/a3027c5cd6859347f120cc035e0ae05c1696af8a))
+
+
+
 # [0.1.0-alpha.2](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/compare/v0.1.0-alpha.1...v0.1.0-alpha.2) (2020-07-03)
 
 # 0.1.0-alpha.1 (2020-07-03)
