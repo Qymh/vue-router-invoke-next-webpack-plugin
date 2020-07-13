@@ -1,3 +1,12 @@
+# [0.1.0-alpha.7](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/compare/v0.1.0-alpha.6...v0.1.0-alpha.7) (2020-07-13)
+
+
+### Bug Fixes
+
+* wrong types for unknown route ([b0b9963](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/commit/b0b99634c085670e50128e459b220152c1de2ce8))
+
+
+
 # [0.1.0-alpha.6](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/compare/v0.1.0-alpha.5...v0.1.0-alpha.6) (2020-07-13)
 
 
