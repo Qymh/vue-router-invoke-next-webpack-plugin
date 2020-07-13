@@ -1,3 +1,12 @@
+# [0.1.0-alpha.6](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/compare/v0.1.0-alpha.5...v0.1.0-alpha.6) (2020-07-13)
+
+
+### Bug Fixes
+
+* error when multiple default page  ([b635db6](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/commit/b635db673a6370aa921aaec8fa0ea426050e19f7))
+
+
+
 # [0.1.0-alpha.5](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/compare/v0.1.0-alpha.4...v0.1.0-alpha.5) (2020-07-13)
 
 
