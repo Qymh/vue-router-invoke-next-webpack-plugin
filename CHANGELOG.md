@@ -1,3 +1,12 @@
+# [0.1.0-alpha.5](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/compare/v0.1.0-alpha.4...v0.1.0-alpha.5) (2020-07-13)
+
+
+### Features
+
+* friendly logs ([eea3a35](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/commit/eea3a355c1f64d0e606e7fb636e63fd189f38eea))
+
+
+
 # [0.1.0-alpha.4](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/compare/v0.1.0-alpha.3...v0.1.0-alpha.4) (2020-07-13)
 
 
