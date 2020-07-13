@@ -8,7 +8,7 @@
     "lint": "prettier --write .",
     "dev": "rimraf dist && rollup -wc",
     "dev:demo": "cross-env NODE_ENV=development webpack-dev-server --config demo/webpack.config.js",
-    "build": "rimraf dist && rollup -c",
+    "build": "rimraf dist && rollup -c && node scripts/alterTypes",
     "build:demo": "cross-env NODE_ENV=production webpack --config demo/webpack.config.js",
     "test": "jest --watchAll",
     "test:single": "jest",
