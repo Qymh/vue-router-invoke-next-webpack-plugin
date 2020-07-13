@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import chokidar from 'chokidar';
 import { isValidFile } from './ast';
-import { isYAML, clearConsole } from './utils';
+import { isYAML } from './utils';
 import { Options } from './invoke';
 import { resetHasError } from './error';
 
@@ -13,9 +13,8 @@ function isInvokePath(path: string) {
   return /\.invoke/.test(path);
 }
 
-export function watchFiles({ root, dist }: Options, fn: any) {
+export function watchFiles({ root }: Options, fn: any) {
   function finish() {
-    clearConsole();
     fn();
   }
   if (!hasWatched) {

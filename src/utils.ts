@@ -1,6 +1,4 @@
 import _fs from 'fs';
-import readline from 'readline';
-import { success } from './error';
 
 export function toRawObject(val: any) {
   return Object.prototype.toString.call(val).slice(8, -1);
@@ -36,18 +34,6 @@ export function isFile(path: string) {
 
 export function replacePostfix(path: string) {
   return path.replace(/\.[a-zA-Z]*$/, '');
-}
-
-export function clearConsole(path?: string) {
-  if (process.stdout.isTTY) {
-    const blank = '\n'.repeat(process.stdout.rows);
-    console.log(blank);
-    readline.cursorTo(process.stdout, 0, 0);
-    readline.clearScreenDown(process.stdout);
-    if (path) {
-      success(path);
-    }
-  }
 }
 
 export function camelize(path: string) {

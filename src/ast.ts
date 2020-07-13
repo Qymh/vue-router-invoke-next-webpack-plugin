@@ -133,6 +133,20 @@ function getDefaultPage(directory: string): string {
       );
       return '';
     }
+    if (validFilesName.filter((v) => v === 'index').length > 1) {
+      error(
+        ErrorCodes.INVALID_ROUTE_RULE,
+        `the directory ${directory} has multiple default files which call index.xxx`
+      );
+      return '';
+    }
+    if (validFilesName.filter((v) => v === lastName).length > 1) {
+      error(
+        ErrorCodes.INVALID_ROUTE_RULE,
+        `the directory ${directory} has multiple index files which call ${lastName}.xxx`
+      );
+      return '';
+    }
     // single route
     else if (validFilesName.includes('index')) {
       const index = validFilesName.indexOf('index');
