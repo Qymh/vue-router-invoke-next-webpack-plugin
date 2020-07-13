@@ -1,3 +1,13 @@
+# [0.1.0-alpha.4](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/compare/v0.1.0-alpha.3...v0.1.0-alpha.4) (2020-07-13)
+
+
+### Features
+
+* friendly alias ([8e7100b](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/commit/8e7100b68b2deb3013ce7f65826987dd58485577))
+* friendly types supported for cjs ([29c2428](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/commit/29c2428304c42e335c9ec62bf546f5f3a52b310f))
+
+
+
 # [0.1.0-alpha.3](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/compare/v0.1.0-alpha.2...v0.1.0-alpha.3) (2020-07-10)
 
 
