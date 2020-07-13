@@ -44,7 +44,7 @@ export const enum RouteTypes {
   SINGLE = SIMPLE_SINGLE | DYNAMIC_SINGLE,
   NEST = SIMPLE_NEST | DYNAMIC_NEST,
   DYNAMIC = DYNAMIC_SINGLE | DYNAMIC_NEST,
-  UNKNOWN = 1 << 4
+  UNKNOWN = 1 << 5
 }
 /* eslint-enable no-unused-vars */
 
