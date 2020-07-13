@@ -15,6 +15,7 @@ yarn add vue-router-invoke-next-webpack-plugin@alpha -D
 | Options  |       Type       | Required |     Default      |                                         Description |
 | -------- | :--------------: | :------: | :--------------: | --------------------------------------------------: |
 | root     |      String      |   true   |        ''        | the directory which should be watched and generated |
+| alias    |      String      |  false   |     'Invoke'     |                          the root directory's alias |
 | version  | String or Number |  false   |        3         |                                  vue version 2 or 3 |
 | language |      String      |  false   |   'typescript'   |                            typescript or javascript |
 | mode     |      String      |  false   |    'history'     |                                     hash or history |
@@ -32,17 +33,18 @@ module.exports = {
   mode: ...,
   entry: ...,
 
-  // you need set alias path the same as Invoke's Root Option
-  resolve:{
-    alias:{
-      '@': ROOT
+  // you [must] set alias path the same as Invoke's Root Option
+  resolve: {
+    alias: {
+      'Invoke': ROOT
     }
   }
 
   // use plugins
-  plugins:[
+  plugins: [
     new Invoke({
-      root: ROOT // should be the same as resolve.alias.@
+      // should be the same as resolve.alias.Invoke
+      root: ROOT
     })
   ]
 }
@@ -61,8 +63,11 @@ const path = require('path');
 module.exports = {
   // omit other options...
   configureWebpack(config) {
+    // you [must] set alias path the same as Invoke's Root Option
+    config.resolve.alias.Invoke = path.resolve(process.cwd(), 'src/views');
     config.plugins.push(
       new Invoke({
+        // should be the same as resolve.alias.Invoke
         root: path.resolve(process.cwd(), 'src/views')
       })
     );
@@ -74,8 +79,15 @@ module.exports = {
 module.exports = {
   // omit other options...
   configureWebpack: {
+    resolve: {
+      alias: {
+        // you [must] set alias path the same as Invoke's Root Option
+        Invoke: path.resolve(process.cwd(), 'src/views')
+      }
+    },
     plugins: [
       new Invoke({
+        // should be the same as resolve.alias.Invoke
         root: path.resolve(process.cwd(), 'src/views')
       })
     ]
@@ -83,7 +95,22 @@ module.exports = {
 };
 ```
 
-## What Is Root Option
+## Using With Typescript
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "Invoke/*": ["views/*"]
+    }
+  }
+}
+```
+
+you may need add `baseUrl` and `paths` for friendly check
+
+## What Is The Root Option
 
 The `ROOT` option which means the aim directory to be watched, for an example
 
@@ -119,16 +146,16 @@ module.exports = {
   entry: ...,
 
   // you [must] set alias path the same as Invoke's root option
-  resolve:{
-    alias:{
-      '@': path.resolve(process.cwd(), 'src/views')
+  resolve: {
+    alias: {
+      'Invoke': path.resolve(process.cwd(), 'src/views')
     }
   }
 
-  // Cite at here
   plugins:[
     new Invoke({
-      root: path.resolve(process.cwd(), 'src/views') // should be the same as resolve.alias.@
+      // should be the same as resolve.alias.Invoke
+      root: path.resolve(process.cwd(), 'src/views')
     })
   ]
 }
@@ -169,22 +196,22 @@ export const router = createRouter({
     {
       name: 'index',
       path: '/',
-      component: () => import('@/index.vue')
+      component: () => import('Invoke/index.vue')
     },
     {
       name: 'shop',
       path: '/shop',
-      component: () => import('@/shop/index.vue')
+      component: () => import('Invoke/shop/index.vue')
     },
     {
       name: 'shop-star',
       path: '/shop/star',
-      component: () => import('@/shop/star/index.vue')
+      component: () => import('Invoke/shop/star/index.vue')
     },
     {
       name: 'user',
       path: '/user',
-      component: () => import('@/user/index.vue')
+      component: () => import('Invoke/user/index.vue')
     }
   ]
 });
@@ -221,22 +248,22 @@ export const router = createRouter({
     {
       name: 'index',
       path: '/',
-      component: () => import('@/index.vue')
+      component: () => import('Invoke/index.vue')
     },
     {
       name: 'user',
       path: '/:user',
-      component: () => import('@/_user/index.vue')
+      component: () => import('Invoke/_user/index.vue')
     },
     {
       name: 'shop',
       path: '/shop',
-      component: () => import('@/shop/index.vue')
+      component: () => import('Invoke/shop/index.vue')
     },
     {
       name: 'shop-star',
       path: '/shop/:star',
-      component: () => import('@/shop/_star/index.vue')
+      component: () => import('Invoke/shop/_star/index.vue')
     }
   ]
 });
@@ -273,23 +300,23 @@ export const router = createRouter({
     {
       name: 'index',
       path: '/',
-      component: () => import('@/index.vue')
+      component: () => import('Invoke/index.vue')
     },
     {
       name: 'nest',
       path: '/nest',
-      component: () => import('@/nest/nest.vue'),
+      component: () => import('Invoke/nest/nest.vue'),
 
       children: [
         {
           name: 'nest-child',
           path: 'child',
-          component: () => import('@/nest/child/index.vue')
+          component: () => import('Invoke/nest/child/index.vue')
         },
         {
           name: 'nest-inner',
           path: 'inner',
-          component: () => import('@/nest/inner/index.vue')
+          component: () => import('Invoke/nest/inner/index.vue')
         }
       ]
     }
@@ -336,12 +363,12 @@ export const router = createRouter({
     {
       name: 'index',
       path: '/',
-      component: () => import('@/index.vue')
+      component: () => import('Invoke/index.vue')
     },
     {
       name: 'single',
       path: '/single',
-      component: () => import('@/single/index.vue'),
+      component: () => import('Invoke/single/index.vue'),
 
       meta: {
         number: 123,
@@ -371,16 +398,16 @@ module.exports = {
   entry: ...,
 
   // you [must] set alias path the same as Invoke's root option
-  resolve:{
-    alias:{
-      '@': path.resolve(process.cwd(), 'src/views')
+  resolve: {
+    alias: {
+      'Invoke': path.resolve(process.cwd(), 'src/views')
     }
   }
 
-  // Cite at here
-  plugins:[
+  plugins: [
     new Invoke({
-      root: path.resolve(process.cwd(), 'src/views'), // should be the same as resolve.alias.@
+      // should be the same as resolve.alias.Invoke
+      root: path.resolve(process.cwd(), 'src/views'),
       scrollBehavior(to, from, savedPosition) {
         if (savedPosition) {
           return savedPosition;
@@ -413,7 +440,7 @@ export const router = createRouter({
     {
       name: 'index',
       path: '/',
-      component: () => import('@/index.vue')
+      component: () => import('Invoke/index.vue')
     }
   ],
   scrollBehavior: function scrollBehavior(to, from, savedPosition) {
@@ -426,5 +453,71 @@ export const router = createRouter({
       };
     }
   }
+});
+```
+
+## Change Default Alias
+
+If you want to change default alias `Invoke` you can use the option called `alias`
+
+webpack.config.js
+
+```js
+const Invoke = require('vue-router-invoke-next-webpack-plugin');
+const path = require('path');
+
+module.exports = {
+  // omit some options
+  mode: ...,
+  entry: ...,
+
+  resolve: {
+    alias: {
+      '@': path.resolve(process.cwd(), 'src/views')
+    }
+  }
+
+  plugins:[
+    new Invoke({
+      // should be the same as resolve.alias.@
+      root: path.resolve(process.cwd(), 'src/views'),
+      // change default alias
+      alias: '@',
+      scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) {
+          return savedPosition;
+        } else {
+          return { left: 0, top: 0 };
+        }
+      },
+    })
+  ]
+}
+```
+
+```tree
+src
+├── app.vue
+├── main.js
+└── views
+    └── index.vue
+```
+
+src/views/.invoke/router.js
+
+```js
+import { createRouter, createWebHistory } from 'vue-router';
+
+export const routerHistory = createWebHistory();
+export const router = createRouter({
+  history: routerHistory,
+  routes: [
+    {
+      name: 'index',
+      path: '/',
+      // has changed default alias
+      component: () => import('@/index.vue')
+    }
+  ]
 });
 ```

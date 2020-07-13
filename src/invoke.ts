@@ -11,6 +11,8 @@ declare var __TEST__: boolean;
 export type WeakOptions = {
   // watch directory
   root: string;
+  // alias
+  alias?: string;
   version?: '2' | '3' | 2 | 3;
   // output file
   dist?: string;
@@ -29,6 +31,7 @@ export type Options = Required<WeakOptions>;
 
 export const defaultOptions: WeakOptions = {
   root: '',
+  alias: 'Invoke',
   version: '3',
   dist: '',
   language: 'javascript',

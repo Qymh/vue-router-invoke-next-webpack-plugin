@@ -2,6 +2,10 @@
   "extends": "../tsconfig",
   "include": ["./*"],
   "compilerOptions": {
-    "declaration": false
+    "declaration": false,
+    "baseUrl": ".",
+    "paths": {
+      "Invoke/*": ["views/*"]
+    }
   }
 }

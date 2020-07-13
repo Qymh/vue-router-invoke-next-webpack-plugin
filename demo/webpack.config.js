@@ -49,7 +49,7 @@ const base = {
   ],
   resolve: {
     alias: {
-      '@': resolve('views')
+      Invoke: resolve('views')
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx']
   }

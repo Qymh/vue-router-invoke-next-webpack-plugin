@@ -125,7 +125,12 @@ function getDefaultPage(directory: string): string {
   else if (validFilesName.length >= 2) {
     if (validFilesName.includes('index') && validFilesName.includes(lastName)) {
       // wrong both have signle route and nested route
-      errorForMultiplePage(directory, validFiles);
+      error(
+        ErrorCodes.INVALID_ROUTE_RULE,
+        `the directory ${directory} has both signle route and nested route which are ${validFiles.join(
+          ','
+        )}`
+      );
       return '';
     }
     // single route
@@ -145,15 +150,6 @@ function getDefaultPage(directory: string): string {
 
 export function isValidFile(path: string) {
   return isVue(path) || isYAML(path) || isJsOrTs(path);
-}
-
-function errorForMultiplePage(directory: string, args: string[]) {
-  error(
-    ErrorCodes.INVALID_ROUTE_RULE,
-    `the directory ${directory} has both signle route and nested route which are ${args.join(
-      ','
-    )}`
-  );
 }
 
 function toDynamicName(path: string) {
@@ -202,7 +198,9 @@ function checkSimpleRouteTypes(pathArrLast: string, parentPathArrLast: string) {
 
 function setTreePath(tree: Tree, filePath: string, options: Options) {
   tree.filePath = filePath;
-  tree.aliasPath = filePath.replace(options.root, '@');
+  tree.aliasPath = filePath
+    .replace(options.root, options.alias)
+    .replace(/\.[jt]sx?$/, '');
 }
 
 function processDirectory(directory: string, options: Options, parent: Tree) {
