@@ -2,6 +2,7 @@ import { callWarn, make, clear } from './utils';
 import Invoke from '../src';
 import path from 'path';
 import fs from 'fs-extra';
+import { printLogs } from '../src/error';
 const defaultViews = path.resolve(process.cwd(), 'tests/views');
 
 describe('wrong cases', () => {
@@ -10,6 +11,7 @@ describe('wrong cases', () => {
   it('root', () => {
     // @ts-ignore
     new Invoke({});
+    printLogs();
     expect('').toHaveBeenWarned();
   });
 
@@ -19,6 +21,7 @@ describe('wrong cases', () => {
       // @ts-ignore
       version: '4'
     });
+    printLogs();
     expect('').toHaveBeenWarned();
   });
 
@@ -28,6 +31,7 @@ describe('wrong cases', () => {
       // @ts-ignore,
       language: 'ts'
     });
+    printLogs();
     expect('').toHaveBeenWarned();
   });
 
@@ -37,6 +41,7 @@ describe('wrong cases', () => {
       // @ts-ignore,
       mode: 'test'
     });
+    printLogs();
     expect('').toHaveBeenWarned();
   });
 
@@ -45,6 +50,7 @@ describe('wrong cases', () => {
       root: defaultViews
     });
     i.test();
+    printLogs();
     expect('').toHaveBeenWarned();
   });
 
@@ -55,6 +61,7 @@ describe('wrong cases', () => {
       root: defaultViews
     });
     i.test();
+    printLogs();
     expect('').toHaveBeenWarned();
     clear();
   });
@@ -67,6 +74,7 @@ describe('wrong cases', () => {
       root: defaultViews
     });
     i.test();
+    printLogs();
     expect('').toHaveBeenWarned();
     clear();
   });
@@ -85,6 +93,7 @@ describe('wrong cases', () => {
       root: defaultViews
     });
     i.test();
+    printLogs();
     expect('').toHaveBeenWarned();
     clear();
   });

@@ -2,7 +2,7 @@ import { Compiler } from 'webpack';
 import path from 'path';
 import { RouterOptions } from 'vue-router';
 import { generate } from './generate';
-import { ErrorCodes, error } from './error';
+import { ErrorCodes, error, printLogs } from './error';
 import { replacePostfix, camelize, isDir } from './utils';
 import chalk from 'chalk';
 
@@ -114,11 +114,17 @@ export class Invoke {
       compiler.hooks.entryOption.tap('invoke', () => {
         generate(this.$options);
       });
+      compiler.hooks.done.tap('logs', () => {
+        printLogs();
+      });
     }
     // webpack3
     else {
       compiler.plugin('entry-option', () => {
         generate(this.$options);
+      });
+      compiler.plugin('done', () => {
+        printLogs();
       });
     }
   }
