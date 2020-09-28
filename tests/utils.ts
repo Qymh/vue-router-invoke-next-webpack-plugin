@@ -62,9 +62,7 @@ export function callWarn(error = false) {
 }
 
 export function make(add: string) {
-  fs.outputFileSync(path.resolve(process.cwd(), 'tests/views', add), {
-    recursive: true
-  });
+  fs.outputFileSync(path.resolve(process.cwd(), 'tests/views', add), '');
 }
 
 export function clear() {
