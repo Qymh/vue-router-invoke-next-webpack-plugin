@@ -1,6 +1,6 @@
 {
   "name": "vue-router-invoke-next-webpack-plugin",
-  "version": "0.1.0-alpha.7",
+  "version": "1.0.0",
   "main": "dist/vue-router-invoke-next-webpack-plugin",
   "license": "MIT",
   "scripts": {
