@@ -7,7 +7,7 @@ Automatic generate routes of `vue-router` based on the directory, both supported
 ### Download
 
 ```yaml
-yarn add vue-router-invoke-next-webpack-plugin@alpha -D
+yarn add vue-router-invoke-next-webpack-plugin -D
 ```
 
 ## Options
