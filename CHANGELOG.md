@@ -1,3 +1,12 @@
+# [1.0.0](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/compare/v0.1.0-alpha.7...v1.0.0) (2020-09-28)
+
+
+### Features
+
+* migrate to vue3 ([a1bbbd0](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/commit/a1bbbd0edebdb3f99fd79de4541ccf7645a7677d))
+
+
+
 # [0.1.0-alpha.7](https://github.com/Qymh/vue-router-invoke-next-webpack-plugin/compare/v0.1.0-alpha.6...v0.1.0-alpha.7) (2020-07-13)
 
 ### Bug Fixes
